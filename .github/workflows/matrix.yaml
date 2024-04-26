@@ -26,9 +26,10 @@ jobs:
       matrix:
         os: [os-1, os-2]
         pyversion: [pyv-1, pyv-2]
+        full: true
         include:
         - os: os-1
-          full: [true, false]
+          full: false
 
     steps:
     - name: Info
