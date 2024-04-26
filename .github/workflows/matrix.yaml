@@ -7,7 +7,7 @@ on:
 
 jobs:
 
-  simple_matrix:
+  simple:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -20,12 +20,13 @@ jobs:
         echo "matrix.os = ${{ matrix.os }}"
         echo "matrix.pyversion = ${{ matrix.pyversion }}"
 
-  include_add_matrix:
+  incl_add:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         os: [os-1, os-2]
         pyversion: [pyv-1, pyv-2]
+        full: [true]
         include:
         - os: os-1
           pyversion: pyv-3
@@ -35,8 +36,9 @@ jobs:
       run: |
         echo "matrix.os = ${{ matrix.os }}"
         echo "matrix.pyversion = ${{ matrix.pyversion }}"
+        echo "matrix.full = ${{ matrix.full }}"
 
-  include_new_matrix:
+  incl_new:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -53,7 +55,7 @@ jobs:
         echo "matrix.pyversion = ${{ matrix.pyversion }}"
         echo "matrix.test = ${{ matrix.test }}"
 
-  exclude_matrix:
+  exclude:
     runs-on: ubuntu-latest
     strategy:
       matrix:
