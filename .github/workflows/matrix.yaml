@@ -1,6 +1,10 @@
 ---
 name: Test matrix -- include etc.
 
+on:
+  push:
+    branches: [ "main" ]
+
 jobs:
 
   simple_matrix:
