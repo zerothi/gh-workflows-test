@@ -1,0 +1,62 @@
+---
+name: Test matrix -- include etc.
+
+jobs:
+
+  simple_matrix:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windwows-latest]
+        python-version: ['3.9', '3.12']
+
+    steps:
+    - name: Info
+      run: |
+        echo "matrix.os = ${{ matrix.os }}"
+        echo "matrix.python-version = ${{ matrix.python-version }}"
+
+  include_add_matrix:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windwows-latest]
+        python-version: ['3.9', '3.12']
+        include:
+        - os: ubuntu-latest
+          python-version: '3.8'
+
+    steps:
+    - name: Info
+      run: |
+        echo "matrix.os = ${{ matrix.os }}"
+        echo "matrix.python-version = ${{ matrix.python-version }}"
+
+  include_new_matrix:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windwows-latest]
+        python-version: ['3.9', '3.12']
+        include:
+        - os: ubuntu-latest
+          test: 'hello'
+
+    steps:
+    - name: Info
+      run: |
+        echo "matrix.os = ${{ matrix.os }}"
+        echo "matrix.python-version = ${{ matrix.python-version }}"
+        echo "matrix.test = ${{ matrix.test }}"
+
+  exclude_matrix:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windwows-latest]
+        python-version: ['3.9', '3.12']
+        exclude:
+        - os: ubuntu-latest
+          python-version: '3.12'
+
+    steps:
+    - name: Info
+      run: |
+        echo "matrix.os = ${{ matrix.os }}"
+        echo "matrix.python-version = ${{ matrix.python-version }}"
