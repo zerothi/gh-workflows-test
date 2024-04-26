@@ -8,6 +8,7 @@ on:
 jobs:
 
   simple_matrix:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         os: [ubuntu-latest, windwows-latest]
@@ -20,6 +21,7 @@ jobs:
         echo "matrix.python-version = ${{ matrix.python-version }}"
 
   include_add_matrix:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         os: [ubuntu-latest, windwows-latest]
@@ -35,6 +37,7 @@ jobs:
         echo "matrix.python-version = ${{ matrix.python-version }}"
 
   include_new_matrix:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         os: [ubuntu-latest, windwows-latest]
@@ -51,6 +54,7 @@ jobs:
         echo "matrix.test = ${{ matrix.test }}"
 
   exclude_matrix:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         os: [ubuntu-latest, windwows-latest]
