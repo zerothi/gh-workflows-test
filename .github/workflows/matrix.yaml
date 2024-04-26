@@ -11,60 +11,60 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [ubuntu-latest, windwows-latest]
-        python-version: ['3.9', '3.12']
+        os: [os-1, os-2]
+        pyversion: [pyv-1, pyv-2]
 
     steps:
     - name: Info
       run: |
         echo "matrix.os = ${{ matrix.os }}"
-        echo "matrix.python-version = ${{ matrix.python-version }}"
+        echo "matrix.pyversion = ${{ matrix.pyversion }}"
 
   include_add_matrix:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [ubuntu-latest, windwows-latest]
-        python-version: ['3.9', '3.12']
+        os: [os-1, os-2]
+        pyversion: [pyv-1, pyv-2]
         include:
-        - os: ubuntu-latest
-          python-version: '3.8'
+        - os: os-1
+          pyversion: pyv-3
 
     steps:
     - name: Info
       run: |
         echo "matrix.os = ${{ matrix.os }}"
-        echo "matrix.python-version = ${{ matrix.python-version }}"
+        echo "matrix.pyversion = ${{ matrix.pyversion }}"
 
   include_new_matrix:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [ubuntu-latest, windwows-latest]
-        python-version: ['3.9', '3.12']
+        os: [os-1, os-2]
+        pyversion: [pyv-1, pyv-2]
         include:
-        - os: ubuntu-latest
-          test: 'hello'
+        - os: os-1
+          test: test-1
 
     steps:
     - name: Info
       run: |
         echo "matrix.os = ${{ matrix.os }}"
-        echo "matrix.python-version = ${{ matrix.python-version }}"
+        echo "matrix.pyversion = ${{ matrix.pyversion }}"
         echo "matrix.test = ${{ matrix.test }}"
 
   exclude_matrix:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [ubuntu-latest, windwows-latest]
-        python-version: ['3.9', '3.12']
+        os: [os-1, os-2]
+        pyversion: [pyv-1, pyv-2]
         exclude:
-        - os: ubuntu-latest
-          python-version: '3.12'
+        - os: os-1
+          pyversion: pyv-2
 
     steps:
     - name: Info
       run: |
         echo "matrix.os = ${{ matrix.os }}"
-        echo "matrix.python-version = ${{ matrix.python-version }}"
+        echo "matrix.pyversion = ${{ matrix.pyversion }}"
